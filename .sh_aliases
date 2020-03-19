@@ -3,7 +3,7 @@
 ###########
 
 TIME_COMMANDS=true # set to 'false' to disable prefxing commands with time
- 
+
 GIT_LOG_ONE_LINE="git log --oneline"
 GIT_LOG_ONE_LINE_SHORT="$GIT_LOG_ONE_LINE -30"
 
@@ -52,8 +52,10 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 
-# misc ADB aliases
-alias screenshot="adb exec-out screencap -p > screen-$(date -j "+%s").png"
+# ADB aliases from https://gist.github.com/Pulimet/5013acf2cd5b28e55036c82c91bd56d8
+alias apkinstall="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X install -r $1"
 alias startintent="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell am start $1"
 alias rmapp="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X uninstall $1"
 alias clearapp="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell pm clear $1"
+
+alias adb_screenshot='adb exec-out screencap -p > $(date +"%Y-%m-%d_%H-%M-%S").png'
