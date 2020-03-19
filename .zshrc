@@ -1,8 +1,8 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/agalanomatis/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -70,7 +70,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git nvm zsh-autosuggestions)
+plugins=(git nvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,6 +99,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Load nvm installed via brew
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Call nvm use automatically in a directory with a .nvmrc file
 autoload -U add-zsh-hook
@@ -129,5 +134,7 @@ source_sh() {
 }
 source_sh ~/.sh_aliases
 
-# Load syntax highlighting
+# Load syntax highlighting installed via brew
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Load auto suggestions installed via brew
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
