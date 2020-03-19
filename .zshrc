@@ -132,7 +132,7 @@ source_sh() {
   emulate -LR sh
   . "$@"
 }
-source_sh ~/.sh_aliases
+source_sh ~/.bashrc
 
 # Load syntax highlighting installed via brew
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
