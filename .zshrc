@@ -132,7 +132,14 @@ source_sh() {
   emulate -LR sh
   . "$@"
 }
-source_sh ~/.bashrc
+
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in ~/.{path,aliases,functions,extra}; do
+	[ -r "$file" ] && [ -f "$file" ] && source_sh "$file";
+done;
+unset file;
 
 # Load syntax highlighting installed via brew
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
