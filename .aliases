@@ -58,5 +58,18 @@ alias startintent="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X sh
 alias rmapp="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X uninstall $1"
 alias clearapp="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell pm clear $1"
 
+function adball() {
+  for DEVICE in `adb devices | tail  -n +2 | cut -f1`
+  do
+    echo "adb -s $DEVICE $@"
+    adb -s $DEVICE $@
+  done
+}
+
+function adbxargs() {
+  echo "executing for each device: adb $@";
+  adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X $@;
+}
+
 alias adbimg='cd && adb exec-out screencap -p > $(date +"%Y-%m-%d_%H-%M-%S").png'
 alias adbtext='adb shell input text $1'

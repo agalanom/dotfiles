@@ -70,7 +70,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git nvm)
+plugins=(git nvm adb)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -131,6 +131,10 @@ load-nvmrc
 source_sh() {
   emulate -LR sh
   . "$@"
+}
+source_bash() {
+  emulate -LR bash
+  builtin source "$@"
 }
 
 # Load the shell dotfiles, and then some:
