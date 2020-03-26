@@ -12,6 +12,9 @@ GIT_FETCH_ALL_AND_PRUNE="git fetch --all -p"
 
 NPM_RUN_TEST="npm run jest -- --watch --runInBand"
 
+alias ls='ls -GFh' # -h Human readable, -G colour output, -F symbols for file types
+alias du:s="du -sh */ | sort -h" # get file sizes, aggregated to top-level folders, sorted in desc order
+
 alias log="prefix $GIT_LOG_ONE_LINE_SHORT"
 alias loga="prefix $GIT_LOG_ONE_LINE"
 alias f="echo 'Syncing git repo with remote...' && prefix $GIT_FETCH_ALL_AND_PRUNE"
