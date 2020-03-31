@@ -21,7 +21,7 @@
     branches = branch -a
     remotes = remote -v
 
-    stashes = stash --list
+    stashes = stash list
 
     # List aliases
     aliases = config --get-regexp alias
