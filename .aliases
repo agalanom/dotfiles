@@ -56,10 +56,10 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 
 # ADB aliases from https://gist.github.com/Pulimet/5013acf2cd5b28e55036c82c91bd56d8
-alias apkinstall="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X install -r $1"
-alias startintent="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell am start $1"
-alias rmapp="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X uninstall $1"
-alias clearapp="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell pm clear $1"
+alias apkinstall='adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X install -r $1'
+alias startintent='adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell am start $1'
+alias rmapp='adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X uninstall $1'
+alias clearapp='adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell pm clear $1'
 
 function adball() {
   for DEVICE in `adb devices | tail  -n +2 | cut -f1`
