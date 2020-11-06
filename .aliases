@@ -53,7 +53,7 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$JAVA_HOME/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 
 # ADB aliases from https://gist.github.com/Pulimet/5013acf2cd5b28e55036c82c91bd56d8
 alias apkinstall='adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X install -r $1'
@@ -75,4 +75,18 @@ function adbxargs() {
 }
 
 alias adbimg='cd && adb exec-out screencap -p > $(date +"%Y-%m-%d_%H-%M-%S").png'
-alias adbtext='adb shell input text $1'
+# alias adbtext='adb shell input text $1'
+function adbtext() {
+  adb shell input text $(echo "$*" | sed 's/ /\%s/g')
+}
+alias adbkey='adb shell input keyevent $1'
+
+function yvrig() {
+  rig_no=$(echo $1 | cut -d "-" -f 1)
+  stb_no=$(echo $1 | cut -d "-" -f 2)
+  curl -SsLf "https://testaut-hub.dev.youview.co.uk/redirect/testaut-$rig_no-stb-$stb_no/api/v1/network/box" | jq -r .ip
+}
+
+function adbrig() {
+  adb connect $(yvrig $1)
+}
