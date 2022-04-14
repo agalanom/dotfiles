@@ -10,6 +10,7 @@ function doIt() {
 		--exclude "bootstrap.sh" \
 		--exclude "Brewfile" \
 		--exclude "README.md" \
+		--exclude ".android" \
 		-avh --no-perms . ~;
 	source ~/.bash_profile;
 }

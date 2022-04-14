@@ -26,3 +26,10 @@ if [ $? -eq 0 ]; then
 		git diff --no-index --color-words "$@";
 	}
 fi;
+
+# Taken from https://github.com/AdoptOpenJDK/homebrew-openjdk#switch-between-different-jdk-versions
+function jdk() {
+	version=$1
+	export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+	java -version
+}
